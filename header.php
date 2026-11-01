@@ -123,6 +123,7 @@
                                                     
                                                     <li class="current"><a href="<?php echo get_page_link(342); ?>">Аспирантура и докторантура</a></li>
                                                     <li class="current"><a href="<?php echo get_page_link(354); ?>">Совет по защите диссертаций</a></li>
+                                                    <li><a href="<?php echo esc_url(mbio_zinchenko_url()); ?>">Анатолий Иванович Зинченко</a></li>
                                                    
                                                     <li class="dropdown"><a href="#">Общественные объединения</a>
                                                         <ul class='my-ul-style'>
