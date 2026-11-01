@@ -10,8 +10,8 @@ if (!defined('WP_CLI')) {
     exit("Run this script with WP-CLI.\n");
 }
 
-$data_file = get_theme_file_path('data/zinchenko.json');
-$data = json_decode(file_get_contents($data_file), true);
+$data_file = get_theme_file_path('data/zinchenko.php');
+$data = is_readable($data_file) ? require $data_file : null;
 if (!is_array($data) || count($data['categories'] ?? []) !== 5) {
     WP_CLI::error('The Zinchenko content data is missing or incomplete.');
 }

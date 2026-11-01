@@ -5,9 +5,9 @@ function mbio_zinchenko_data() {
     static $data = null;
 
     if ($data === null) {
-        $file = get_theme_file_path('data/zinchenko.json');
-        $decoded = is_readable($file) ? json_decode(file_get_contents($file), true) : null;
-        $data = is_array($decoded) ? $decoded : [];
+        $file = get_theme_file_path('data/zinchenko.php');
+        $loaded = is_readable($file) ? require $file : null;
+        $data = is_array($loaded) ? $loaded : [];
     }
 
     return $data;
