@@ -1,0 +1,123 @@
+<?php 
+    // template Name: OurResearchers;
+?>
+<?php get_header(); ?>
+
+<section class="page-banner">
+    <div class="image-layer" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></div>
+
+    <div class="auto-container">
+        <div class="breadcrumb-box">
+            <div class="auto-container">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="<?php echo get_page_link(6) ?>">Главная</a></li>
+                    <li class="active"><?php the_title(); ?></li>
+                </ul>
+            </div>
+        </div>
+
+        <h2><?php the_title(); ?></h2>
+    </div>
+
+</section>
+
+<div class="sidebar-page-container my-padding my-padding-bottom">
+    <div class="auto-container">
+        <div class="row clearfix">
+            
+            <!--Content Side-->
+            <div class="content-side col-lg-8 col-md-12 col-sm-12">
+                <div class="service-details">
+                    <div class="details-inner">
+                        
+                        
+                        <div class="text-block text-content">
+                            <div class="sec-title service-title">                                         
+                               <h2><?php the_title(); ?></h2>
+                            </div>
+                            
+                             <section class="faq-section">
+                <div class="auto-container">
+                    <div class="faq-container">
+                        <div class="accordion-box">
+                            
+                            <?php
+                                global $post;
+            
+                                $myposts = get_posts([
+                                    'numberposts' => -1,
+                                    'offset'      => 1,
+                                    'category'    => 7
+                                ]);
+            
+                                if( $myposts ){
+                                    foreach( $myposts as $post ){
+                                        setup_postdata( $post );
+                                        ?>
+                                        <div class="accordion block">
+                                            <div class="acc-btn">
+                                               <?php the_title(); ?>
+                                                <div class="icon flaticon-cross"></div>
+                                            </div>
+                                            <div class="acc-content">
+                                                <div class="content">
+                                                    <div class="text">
+                                                        <?php the_content(); ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                } else {
+                                    // Постов не найдено
+                                }
+            
+                                wp_reset_postdata(); 
+                            ?>
+                            
+                            <!--Block-->
+                            
+                            
+                            
+
+                           
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </section>
+                            
+                            <!--<?php the_content(); ?>-->
+                            
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!--Sidebar Side-->
+            <div class="sidebar-side col-lg-4 col-md-8 col-sm-12">
+                <aside class="sidebar service-sidebar">
+                                                    
+                    <div class="sidebar-widget downloads-widget">
+                        <div class="widget-inner">
+                            <h3>Полезные ссылки</h3>
+                            <ul>
+                                <li><a target="_blank" href="https://mbio.bas-net.by/wp-content/uploads/2025/04/booklet_full.pdf"><span class="far fa-file-pdf"></span>Буклет об Институте микробиологии НАНБ</a></li>
+                                <li><a target="_blank" href="https://nasb.gov.by/rus/about/glavnaya/">Национальная Академия Наук Беларуси</a></li>
+                                <li><a target="_blank" href="https://www.government.by/ru/">Совет Министров Республики Беларусь</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<?php get_footer(); ?> 
