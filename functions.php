@@ -1,5 +1,4 @@
 <?php 
-require_once __DIR__ . '/inc/zinchenko.php';
     add_action( 'wp_enqueue_scripts', function() {
         
         //  if( is_page( 96 )  || is_page( 152)){
