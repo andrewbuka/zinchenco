@@ -1975,6 +1975,9 @@ add_action('wp_head', static function () { ?>
 .zinchenko-breadcrumb { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 48px; color: rgba(255,255,255,.85); font-size: 14px; }
 .zinchenko-breadcrumb a, .zinchenko-breadcrumb a:hover { color: #fff; }
 .zinchenko-breadcrumb a:hover { text-decoration: underline; }
+.zinchenko-hero-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); align-items: center; gap: clamp(32px, 6vw, 85px); }
+.zinchenko-portrait { width: 100%; padding: 9px; margin: 0; border: 1px solid rgba(255,255,255,.35); border-radius: 6px; background: rgba(255,255,255,.08); box-shadow: 0 22px 48px rgba(5,31,20,.24); }
+.zinchenko-portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 28%; border-radius: 3px; }
 .zinchenko-eyebrow, .zinchenko-kicker { margin: 0 0 14px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .zinchenko-eyebrow { color: #d9efc8; }
 .zinchenko-kicker { color: #246e49; }
@@ -2038,6 +2041,8 @@ add_action('wp_head', static function () { ?>
 @media (max-width: 767px) {
   .zinchenko-hero { padding: 32px 0 55px; }
   .zinchenko-breadcrumb { margin-bottom: 35px; }
+  .zinchenko-hero-inner { grid-template-columns: 1fr; gap: 34px; }
+  .zinchenko-portrait { max-width: 290px; margin: 0 auto; }
   .zinchenko-content { padding-top: 45px; padding-bottom: 70px; }
   .zinchenko-section { padding-bottom: 50px; margin-bottom: 50px; }
   .zinchenko-publication-types { display: none; }
@@ -2069,10 +2074,17 @@ get_header();
                 <span aria-hidden="true">/</span>
                 <span aria-current="page"><?php echo esc_html($zinchenko['name']); ?></span>
             </nav>
-            <p class="zinchenko-eyebrow">Институт микробиологии НАН Беларуси</p>
-            <h1><?php echo esc_html($zinchenko['name']); ?></h1>
-            <p class="zinchenko-lead"><?php echo esc_html($zinchenko['role']); ?></p>
-            <a class="zinchenko-hero-link" href="#zinchenko-publications">Научные труды <span aria-hidden="true">↓</span></a>
+            <div class="zinchenko-hero-inner">
+                <div>
+                    <p class="zinchenko-eyebrow">Институт микробиологии НАН Беларуси</p>
+                    <h1><?php echo esc_html($zinchenko['name']); ?></h1>
+                    <p class="zinchenko-lead"><?php echo esc_html($zinchenko['role']); ?></p>
+                    <a class="zinchenko-hero-link" href="#zinchenko-publications">Научные труды <span aria-hidden="true">↓</span></a>
+                </div>
+                <figure class="zinchenko-portrait">
+                    <img src="<?php echo esc_url(trailingslashit(get_template_directory_uri()) . 'assets/zinchenko/zinchenko-img.jpg'); ?>" alt="<?php echo esc_attr($zinchenko['name']); ?>" width="1718" height="2560" fetchpriority="high" decoding="async">
+                </figure>
+            </div>
         </div>
     </header>
 
