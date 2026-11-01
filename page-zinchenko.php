@@ -1983,10 +1983,13 @@ add_action('wp_head', static function () { ?>
 .zinchenko-kicker { color: #246e49; }
 .zinchenko-hero h1 { max-width: 850px; margin: 0 0 22px; color: #fff; font-size: clamp(34px, 5vw, 62px); font-weight: 700; line-height: 1.12; }
 .zinchenko-lead { max-width: 820px; margin: 0; color: #f2f8ed; font-size: clamp(17px, 2vw, 21px); line-height: 1.65; }
-.zinchenko-hero-link { display: inline-flex; gap: 14px; margin-top: 35px; padding: 13px 20px; border: 1px solid rgba(255,255,255,.7); border-radius: 4px; color: #fff; font-weight: 700; }
+.zinchenko-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 35px; }
+.zinchenko-hero-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 14px; padding: 13px 20px; border: 1px solid rgba(255,255,255,.7); border-radius: 4px; color: #fff; font-weight: 700; }
 .zinchenko-hero-link:hover { background: #fff; color: #246e49; }
+.zinchenko-hero-link-pdf { border-color: #fff; background: #fff; color: #174a31; }
+.zinchenko-hero-link-pdf:hover { border-color: #e5f2df; background: #e5f2df; color: #174a31; }
 .zinchenko-content { padding-top: 65px; padding-bottom: 95px; }
-.zinchenko-section { padding-bottom: 72px; margin-bottom: 72px; border-bottom: 1px solid #dfe8df; }
+.zinchenko-section { padding-bottom: 72px; margin-bottom: 72px; border-bottom: 1px solid #dfe8df; scroll-margin-top: 24px; }
 .zinchenko-section:last-child { padding-bottom: 0; margin-bottom: 0; border: 0; }
 .zinchenko-section-intro { max-width: 850px; margin-bottom: 30px; }
 .zinchenko-section h2 { margin: 0 0 18px; color: #193b2a; font-size: clamp(27px, 3vw, 39px); line-height: 1.2; }
@@ -2079,7 +2082,10 @@ get_header();
                     <p class="zinchenko-eyebrow">Институт микробиологии НАН Беларуси</p>
                     <h1><?php echo esc_html($zinchenko['name']); ?></h1>
                     <p class="zinchenko-lead"><?php echo esc_html($zinchenko['role']); ?></p>
-                    <a class="zinchenko-hero-link" href="#zinchenko-publications">Научные труды <span aria-hidden="true">↓</span></a>
+                    <div class="zinchenko-hero-actions">
+                        <a class="zinchenko-hero-link zinchenko-hero-link-pdf" href="#zinchenko-pdfs"><?php echo esc_html(count($zinchenko['pdf_articles'])); ?> статей в PDF <span aria-hidden="true">↓</span></a>
+                        <a class="zinchenko-hero-link" href="#zinchenko-publications">Научные труды <span aria-hidden="true">↓</span></a>
+                    </div>
                 </div>
                 <figure class="zinchenko-portrait">
                     <img src="<?php echo esc_url(trailingslashit(get_template_directory_uri()) . 'assets/zinchenko/zinchenko-img.jpg'); ?>" alt="<?php echo esc_attr($zinchenko['name']); ?>" width="1718" height="2560" fetchpriority="high" decoding="async">
@@ -2098,6 +2104,38 @@ get_header();
                 <?php foreach ($zinchenko['biography'] as $paragraph) : ?>
                     <p><?php echo esc_html($paragraph); ?></p>
                 <?php endforeach; ?>
+            </div>
+        </section>
+
+        <section class="zinchenko-section" id="zinchenko-pdfs" aria-labelledby="zinchenko-pdfs-title">
+            <div class="zinchenko-section-intro">
+                <p class="zinchenko-kicker">Полные тексты</p>
+                <h2 id="zinchenko-pdfs-title">Статьи в PDF</h2>
+                <p>Документы доступны в исходном формате: их можно читать на странице или открыть отдельно в браузере.</p>
+            </div>
+            <ul class="zinchenko-pdf-list">
+                <?php foreach ($zinchenko['pdf_articles'] as $article) : ?>
+                    <?php $url = $zinchenko_pdf_url($article['file']); ?>
+                    <li class="zinchenko-pdf-card">
+                        <span class="zinchenko-pdf-icon" aria-hidden="true">PDF</span>
+                        <div>
+                            <?php if ($article['year']) : ?><span class="zinchenko-pdf-year"><?php echo esc_html($article['year']); ?></span><?php endif; ?>
+                            <h3><?php echo esc_html($article['title']); ?></h3>
+                            <div class="zinchenko-pdf-actions">
+                                <button type="button" class="zinchenko-pdf-show" data-pdf-url="<?php echo esc_url($url); ?>" data-pdf-title="<?php echo esc_attr($article['title']); ?>">Читать на странице</button>
+                                <a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener">Открыть PDF <span class="screen-reader-text">(в новой вкладке)</span></a>
+                            </div>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+            <div class="zinchenko-pdf-viewer" id="zinchenko-pdf-viewer" hidden>
+                <div class="zinchenko-reader-heading">
+                    <h3 id="zinchenko-reader-title"></h3>
+                    <a id="zinchenko-reader-link" href="#" target="_blank" rel="noopener">Открыть PDF отдельно <span class="screen-reader-text">(в новой вкладке)</span></a>
+                </div>
+                <iframe id="zinchenko-reader-frame" title="Просмотр PDF" loading="lazy"></iframe>
+                <p>Если PDF не отображается в вашем браузере, воспользуйтесь ссылкой «Открыть PDF отдельно».</p>
             </div>
         </section>
 
@@ -2173,37 +2211,6 @@ get_header();
             </nav>
         </section>
 
-        <section class="zinchenko-section" id="zinchenko-pdfs" aria-labelledby="zinchenko-pdfs-title">
-            <div class="zinchenko-section-intro">
-                <p class="zinchenko-kicker">Полные тексты</p>
-                <h2 id="zinchenko-pdfs-title">Статьи в PDF</h2>
-                <p>Документы доступны в исходном формате: их можно читать на странице или открыть отдельно в браузере.</p>
-            </div>
-            <ul class="zinchenko-pdf-list">
-                <?php foreach ($zinchenko['pdf_articles'] as $article) : ?>
-                    <?php $url = $zinchenko_pdf_url($article['file']); ?>
-                    <li class="zinchenko-pdf-card">
-                        <span class="zinchenko-pdf-icon" aria-hidden="true">PDF</span>
-                        <div>
-                            <?php if ($article['year']) : ?><span class="zinchenko-pdf-year"><?php echo esc_html($article['year']); ?></span><?php endif; ?>
-                            <h3><?php echo esc_html($article['title']); ?></h3>
-                            <div class="zinchenko-pdf-actions">
-                                <button type="button" class="zinchenko-pdf-show" data-pdf-url="<?php echo esc_url($url); ?>" data-pdf-title="<?php echo esc_attr($article['title']); ?>">Читать на странице</button>
-                                <a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener">Открыть PDF <span class="screen-reader-text">(в новой вкладке)</span></a>
-                            </div>
-                        </div>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-            <div class="zinchenko-pdf-viewer" id="zinchenko-pdf-viewer" hidden>
-                <div class="zinchenko-reader-heading">
-                    <h3 id="zinchenko-reader-title"></h3>
-                    <a id="zinchenko-reader-link" href="#" target="_blank" rel="noopener">Открыть PDF отдельно <span class="screen-reader-text">(в новой вкладке)</span></a>
-                </div>
-                <iframe id="zinchenko-reader-frame" title="Просмотр PDF" loading="lazy"></iframe>
-                <p>Если PDF не отображается в вашем браузере, воспользуйтесь ссылкой «Открыть PDF отдельно».</p>
-            </div>
-        </section>
     </div>
 </main>
 
