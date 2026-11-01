@@ -1991,11 +1991,28 @@ add_action('wp_head', static function () { ?>
 .zinchenko-content { padding-top: 65px; padding-bottom: 95px; }
 .zinchenko-section { padding-bottom: 72px; margin-bottom: 72px; border-bottom: 1px solid #dfe8df; scroll-margin-top: 24px; }
 .zinchenko-section:last-child { padding-bottom: 0; margin-bottom: 0; border: 0; }
+.zinchenko-biography-section { padding-bottom: 48px; margin-bottom: 48px; }
 .zinchenko-section-intro { max-width: 850px; margin-bottom: 30px; }
 .zinchenko-section h2 { margin: 0 0 18px; color: #193b2a; font-size: clamp(27px, 3vw, 39px); line-height: 1.2; }
 .zinchenko-section-intro > p:last-child, .zinchenko-prose p { font-size: 17px; line-height: 1.8; }
 .zinchenko-prose { max-width: 920px; }
 .zinchenko-prose p { margin: 0 0 24px; color: #36463c; }
+.zinchenko-biography-lead { max-width: 920px; margin: 0 0 25px; color: #36463c; font-size: 18px; line-height: 1.65; }
+.zinchenko-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; max-width: 1000px; padding: 0; margin: 0 0 27px; list-style: none; }
+.zinchenko-facts li { min-width: 0; padding: 18px 20px; border-left: 3px solid #84b040; border-radius: 4px; background: #f0f6eb; list-style: none; }
+.zinchenko-facts strong { display: block; margin-bottom: 7px; color: #1c4d32; font-size: 25px; line-height: 1.2; }
+.zinchenko-facts span { display: block; color: #43584a; font-size: 14px; line-height: 1.5; }
+.zinchenko-biography-more { max-width: 1000px; }
+.zinchenko-biography-more > summary { display: inline-flex; align-items: center; gap: 12px; max-width: 100%; padding: 12px 17px; border: 1px solid #b8d0bb; border-radius: 4px; color: #246e49; cursor: pointer; font-size: 15px; font-weight: 700; list-style: none; }
+.zinchenko-biography-more > summary::-webkit-details-marker { display: none; }
+.zinchenko-biography-more > summary:hover { border-color: #246e49; background: #f0f6eb; }
+.zinchenko-biography-more > summary::after { content: "↓"; }
+.zinchenko-biography-more[open] > summary::after { content: "↑"; }
+.zinchenko-biography-more .zinchenko-details-open { display: none; }
+.zinchenko-biography-more[open] .zinchenko-details-closed { display: none; }
+.zinchenko-biography-more[open] .zinchenko-details-open { display: inline; }
+.zinchenko-biography-more .zinchenko-prose { padding-top: 24px; margin-top: 24px; border-top: 1px solid #dfe8df; }
+.zinchenko-biography-more .zinchenko-prose p:last-child { margin-bottom: 0; }
 .zinchenko-page [hidden] { display: none !important; }
 .zinchenko-publication-types { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; margin-bottom: 24px; }
 .zinchenko-publication-type { display: flex; flex-direction: column; justify-content: space-between; gap: 9px; min-height: 83px; padding: 15px 18px; border: 1px solid #d4e3d6; border-radius: 5px; background: #f5f9f3; color: #1c4d32; cursor: pointer; font: inherit; font-size: 15px; font-weight: 700; line-height: 1.35; text-align: left; }
@@ -2041,6 +2058,7 @@ add_action('wp_head', static function () { ?>
 .zinchenko-reader-heading h3 { margin: 0 0 18px; color: #193b2a; font-size: 23px; }
 .zinchenko-pdf-viewer iframe { display: block; width: 100%; height: 75vh; min-height: 500px; border: 1px solid #cedccf; background: #fff; }
 .zinchenko-pdf-viewer > p { margin: 12px 0 0; color: #4b5e50; font-size: 14px; }
+@media (max-width: 900px) { .zinchenko-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 767px) {
   .zinchenko-hero { padding: 32px 0 55px; }
   .zinchenko-breadcrumb { margin-bottom: 35px; }
@@ -2048,6 +2066,10 @@ add_action('wp_head', static function () { ?>
   .zinchenko-portrait { max-width: 290px; margin: 0 auto; }
   .zinchenko-content { padding-top: 45px; padding-bottom: 70px; }
   .zinchenko-section { padding-bottom: 50px; margin-bottom: 50px; }
+  .zinchenko-biography-section { padding-bottom: 28px; margin-bottom: 28px; }
+  .zinchenko-biography-lead { margin-bottom: 20px; font-size: 17px; line-height: 1.6; }
+  .zinchenko-facts { gap: 10px; margin-bottom: 22px; }
+  .zinchenko-facts li { padding: 14px 15px; }
   .zinchenko-publication-types { display: none; }
   .zinchenko-mobile-category { display: block; margin-bottom: 14px; }
   .zinchenko-filter-bar { grid-template-columns: 1fr; padding: 15px; }
@@ -2095,16 +2117,26 @@ get_header();
     </header>
 
     <div class="auto-container zinchenko-content">
-        <section class="zinchenko-section" aria-labelledby="zinchenko-biography-title">
+        <section class="zinchenko-section zinchenko-biography-section" aria-labelledby="zinchenko-biography-title">
             <div class="zinchenko-section-intro">
                 <p class="zinchenko-kicker">Профиль учёного</p>
                 <h2 id="zinchenko-biography-title">Биография и научная деятельность</h2>
             </div>
-            <div class="zinchenko-prose">
-                <?php foreach ($zinchenko['biography'] as $paragraph) : ?>
-                    <p><?php echo esc_html($paragraph); ?></p>
-                <?php endforeach; ?>
-            </div>
+            <p class="zinchenko-biography-lead">Создал научную школу «Биотехнологии соединений нуклеиновой природы» и руководил разработкой более 30 рекомбинантных штаммов микроорганизмов.</p>
+            <ul class="zinchenko-facts" aria-label="Ключевые факты">
+                <li><strong>с 1982</strong><span>в Институте микробиологии</span></li>
+                <li><strong>с 1989</strong><span>заведует лабораторией</span></li>
+                <li><strong>400+</strong><span>научных публикаций</span></li>
+                <li><strong>18</strong><span>патентов Республики Беларусь</span></li>
+            </ul>
+            <details class="zinchenko-biography-more">
+                <summary><span class="zinchenko-details-closed">Читать полную биографию</span><span class="zinchenko-details-open">Свернуть биографию</span></summary>
+                <div class="zinchenko-prose">
+                    <?php foreach ($zinchenko['biography'] as $paragraph) : ?>
+                        <p><?php echo esc_html($paragraph); ?></p>
+                    <?php endforeach; ?>
+                </div>
+            </details>
         </section>
 
         <section class="zinchenko-section" id="zinchenko-pdfs" aria-labelledby="zinchenko-pdfs-title">
