@@ -1990,34 +1990,37 @@ add_action('wp_head', static function () { ?>
 .zinchenko-section-intro > p:last-child, .zinchenko-prose p { font-size: 17px; line-height: 1.8; }
 .zinchenko-prose { max-width: 920px; }
 .zinchenko-prose p { margin: 0 0 24px; color: #36463c; }
-.zinchenko-card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-.zinchenko-card { display: flex; flex-direction: column; min-height: 205px; padding: 28px; border: 1px solid #dce8df; border-top: 4px solid #84b040; border-radius: 5px; box-shadow: 0 10px 30px rgba(14,58,38,.045); color: #26372e; transition: box-shadow .2s ease, transform .2s ease; }
-.zinchenko-card:hover { box-shadow: 0 16px 34px rgba(14,58,38,.13); color: #26372e; transform: translateY(-3px); }
-.zinchenko-card-count, .zinchenko-card-years { color: #556b5d; font-size: 14px; }
-.zinchenko-card-title { display: block; margin: 14px 0 8px; color: #193b2a; font-size: 21px; font-weight: 700; line-height: 1.3; }
-.zinchenko-card-action { display: flex; justify-content: space-between; margin-top: auto; padding-top: 22px; color: #246e49; font-weight: 700; }
-.zinchenko-list { margin: 0 0 16px; border: 1px solid #dce8df; border-radius: 5px; background: #fff; scroll-margin-top: 24px; }
-.zinchenko-list[open] { border-color: #afc9ad; box-shadow: 0 10px 28px rgba(14,58,38,.06); }
-.zinchenko-list > summary { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 21px 26px; color: #193b2a; cursor: pointer; list-style: none; }
-.zinchenko-list > summary::-webkit-details-marker { display: none; }
-.zinchenko-list > summary::after { content: "+"; flex: none; color: #246e49; font-size: 28px; line-height: 1; }
-.zinchenko-list[open] > summary::after { content: "−"; }
-.zinchenko-list-title { font-size: 19px; font-weight: 700; line-height: 1.35; }
-.zinchenko-list-count { flex: none; margin-left: auto; color: #556b5d; font-size: 14px; }
-.zinchenko-list-body { padding: 8px 26px 28px; border-top: 1px solid #e5ede6; }
-.zinchenko-list-note { margin: 16px 0 22px; color: #536a58; font-size: 15px; line-height: 1.6; }
-.zinchenko-year-index { padding: 15px 18px; margin: 0 0 34px; border-radius: 4px; background: #f0f6eb; }
-.zinchenko-year-index summary { color: #1c4d32; cursor: pointer; font-weight: 700; }
-.zinchenko-year-index nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 17px; }
-.zinchenko-year-index a { padding: 6px 10px; border: 1px solid #d7e4da; border-radius: 4px; background: #fff; color: #1c4d32; font-size: 14px; }
-.zinchenko-year-index a:hover { background: #246e49; color: #fff; }
-.zinchenko-year { max-width: 1000px; padding-bottom: 28px; margin-bottom: 30px; scroll-margin-top: 25px; }
+.zinchenko-page [hidden] { display: none !important; }
+.zinchenko-publication-types { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; margin-bottom: 24px; }
+.zinchenko-publication-type { display: flex; flex-direction: column; justify-content: space-between; gap: 9px; min-height: 83px; padding: 15px 18px; border: 1px solid #d4e3d6; border-radius: 5px; background: #f5f9f3; color: #1c4d32; cursor: pointer; font: inherit; font-size: 15px; font-weight: 700; line-height: 1.35; text-align: left; }
+.zinchenko-publication-type:hover, .zinchenko-publication-type[aria-pressed="true"] { border-color: #246e49; background: #246e49; color: #fff; }
+.zinchenko-publication-type-count { font-size: 13px; font-weight: 500; opacity: .85; }
+.zinchenko-mobile-category { display: none; }
+.zinchenko-filter-bar { display: grid; grid-template-columns: minmax(0, 2fr) minmax(180px, 1fr); gap: 16px; padding: 20px; border: 1px solid #dce8df; border-radius: 5px; background: #f0f6eb; }
+.zinchenko-filter-field { display: flex; flex-direction: column; gap: 8px; color: #193b2a; font-size: 14px; font-weight: 700; }
+.zinchenko-filter-field input, .zinchenko-filter-field select { width: 100%; height: 47px; padding: 9px 13px; border: 1px solid #bdd2c0; border-radius: 4px; background: #fff; color: #26372e; font: inherit; font-size: 16px; font-weight: 400; }
+.zinchenko-filter-field input::placeholder { color: #637569; opacity: 1; }
+.zinchenko-results-summary { margin: 22px 0 14px; color: #526657; font-size: 15px; }
+.zinchenko-results { padding: 25px 30px; border: 1px solid #dce8df; border-radius: 5px; background: #fff; scroll-margin-top: 24px; }
+.zinchenko-category:not([hidden]) ~ .zinchenko-category:not([hidden]) { padding-top: 35px; margin-top: 45px; border-top: 1px solid #dce8df; }
+.zinchenko-category h3 { margin: 0 0 9px; color: #193b2a; font-size: 25px; line-height: 1.3; }
+.zinchenko-category-note { margin: 0 0 25px; color: #526657; font-size: 15px; }
+.zinchenko-year { max-width: 1000px; padding-bottom: 18px; margin-bottom: 28px; scroll-margin-top: 25px; }
+.zinchenko-year:last-child { padding-bottom: 0; margin-bottom: 0; }
 .zinchenko-year-heading { display: flex; align-items: baseline; gap: 16px; padding-bottom: 12px; margin-bottom: 18px; border-bottom: 2px solid #e0ebdc; }
-.zinchenko-year h3 { margin: 0; color: #246e49; font-size: 27px; }
-.zinchenko-year-heading span { color: #67796b; font-size: 14px; }
+.zinchenko-year h4 { margin: 0; color: #246e49; font-size: 23px; }
 .zinchenko-year ol { padding-left: 2.4em; margin: 0; list-style: decimal outside; }
-.zinchenko-year li { padding-left: 9px; margin-bottom: 19px; color: #334539; font-size: 16px; line-height: 1.7; list-style-type: decimal; overflow-wrap: anywhere; }
+.zinchenko-year li { padding-left: 8px; margin-bottom: 17px; color: #334539; font-size: 16px; line-height: 1.7; list-style-type: decimal; overflow-wrap: anywhere; }
+.zinchenko-year li:last-child { margin-bottom: 0; }
 .zinchenko-year li::marker { color: #246e49; font-weight: 700; }
+.zinchenko-empty { padding: 25px; margin-top: 18px; border-radius: 5px; background: #f0f6eb; }
+.zinchenko-empty p { margin: 0 0 12px; font-size: 16px; }
+.zinchenko-empty button { padding: 0; border: 0; background: transparent; color: #246e49; cursor: pointer; font: inherit; font-weight: 700; text-decoration: underline; }
+.zinchenko-pagination { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 22px; }
+.zinchenko-pagination button { min-width: 120px; padding: 10px 15px; border: 1px solid #246e49; border-radius: 4px; background: #fff; color: #246e49; cursor: pointer; font: inherit; font-size: 15px; font-weight: 700; }
+.zinchenko-pagination button:hover:not(:disabled) { background: #246e49; color: #fff; }
+.zinchenko-pagination button:disabled { border-color: #cbd8cd; color: #87968a; cursor: default; }
+.zinchenko-page-number { color: #526657; font-size: 15px; text-align: center; }
 .zinchenko-pdf-list { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; padding: 0; margin: 0; list-style: none; }
 .zinchenko-pdf-card { display: flex; gap: 17px; min-width: 0; padding: 23px; border: 1px solid #dce8df; border-radius: 5px; background: #fff; }
 .zinchenko-pdf-card > div { min-width: 0; }
@@ -2037,16 +2040,21 @@ add_action('wp_head', static function () { ?>
   .zinchenko-breadcrumb { margin-bottom: 35px; }
   .zinchenko-content { padding-top: 45px; padding-bottom: 70px; }
   .zinchenko-section { padding-bottom: 50px; margin-bottom: 50px; }
-  .zinchenko-card-grid, .zinchenko-pdf-list { grid-template-columns: 1fr; }
-  .zinchenko-list > summary { flex-wrap: wrap; padding: 18px; }
-  .zinchenko-list-title { flex-basis: calc(100% - 38px); }
-  .zinchenko-list-count { margin-left: 0; }
-  .zinchenko-list-body { padding: 8px 18px 22px; }
+  .zinchenko-publication-types { display: none; }
+  .zinchenko-mobile-category { display: block; margin-bottom: 14px; }
+  .zinchenko-filter-bar { grid-template-columns: 1fr; padding: 15px; }
+  .zinchenko-results { padding: 22px 17px; }
+  .zinchenko-category h3 { font-size: 21px; }
+  .zinchenko-year h4 { font-size: 21px; }
+  .zinchenko-year ol { padding-left: 2em; }
+  .zinchenko-pagination { flex-wrap: wrap; }
+  .zinchenko-page-number { flex-basis: 100%; order: -1; }
+  .zinchenko-pagination button { flex: 1; }
+  .zinchenko-pdf-list { grid-template-columns: 1fr; }
   .zinchenko-reader-heading { flex-direction: column; }
   .zinchenko-pdf-viewer { padding: 18px; }
   .zinchenko-pdf-viewer iframe { height: 65vh; min-height: 400px; }
 }
-@media (prefers-reduced-motion: reduce) { .zinchenko-card { transition: none; } }
 </style>
 <?php }, 99);
 
@@ -2085,55 +2093,72 @@ get_header();
             <div class="zinchenko-section-intro">
                 <p class="zinchenko-kicker">Библиография</p>
                 <h2 id="zinchenko-publications-title">Научные труды</h2>
-                <p>Пять списков публикаций из предоставленных документов. Выберите вид работ, чтобы открыть записи по годам.</p>
+                <p>Выберите вид работ, найдите публикацию по названию или автору и при необходимости укажите год.</p>
             </div>
-            <div class="zinchenko-card-grid">
+
+            <div class="zinchenko-publication-types" role="group" aria-label="Вид публикаций" hidden>
                 <?php foreach ($zinchenko['categories'] as $category) : ?>
-                    <a class="zinchenko-card" href="#zinchenko-<?php echo esc_attr($category['slug']); ?>">
-                        <span class="zinchenko-card-count"><?php echo esc_html($zinchenko_count($category['count'])); ?></span>
-                        <span class="zinchenko-card-title"><?php echo esc_html($category['title']); ?></span>
-                        <span class="zinchenko-card-years"><?php echo esc_html($category['first_year'] . '–' . $category['last_year']); ?></span>
-                        <span class="zinchenko-card-action">Открыть список <span aria-hidden="true">→</span></span>
-                    </a>
+                    <button type="button" class="zinchenko-publication-type" data-category="<?php echo esc_attr($category['slug']); ?>" aria-controls="zinchenko-<?php echo esc_attr($category['slug']); ?>" aria-pressed="false">
+                        <span><?php echo esc_html($category['title']); ?></span>
+                        <span class="zinchenko-publication-type-count"><?php echo esc_html($zinchenko_count($category['count'])); ?></span>
+                    </button>
                 <?php endforeach; ?>
             </div>
-        </section>
+            <div class="zinchenko-mobile-category" hidden>
+                <label class="zinchenko-filter-field" for="zinchenko-category-select">
+                    <span>Вид публикаций</span>
+                    <select id="zinchenko-category-select">
+                        <?php foreach ($zinchenko['categories'] as $category) : ?>
+                            <option value="<?php echo esc_attr($category['slug']); ?>"><?php echo esc_html($category['title']); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </label>
+            </div>
 
-        <section class="zinchenko-section" aria-label="Списки публикаций">
-            <?php foreach ($zinchenko['categories'] as $category) : ?>
-                <details class="zinchenko-list" id="zinchenko-<?php echo esc_attr($category['slug']); ?>">
-                    <summary>
-                        <span class="zinchenko-list-title"><?php echo esc_html($category['title']); ?></span>
-                        <span class="zinchenko-list-count"><?php echo esc_html($zinchenko_count($category['count'])); ?></span>
-                    </summary>
-                    <div class="zinchenko-list-body">
-                        <p class="zinchenko-list-note">Записи приведены по годам в порядке исходного документа.</p>
-                        <details class="zinchenko-year-index">
-                            <summary>Перейти к году</summary>
-                            <nav aria-label="Годы: <?php echo esc_attr($category['title']); ?>">
-                                <?php foreach ($category['years'] as $group) : ?>
-                                    <a href="#year-<?php echo esc_attr($category['slug'] . '-' . $group['year']); ?>"><?php echo esc_html($group['year']); ?></a>
-                                <?php endforeach; ?>
-                            </nav>
-                        </details>
+            <div class="zinchenko-filter-bar" hidden>
+                <label class="zinchenko-filter-field" for="zinchenko-search">
+                    <span>Поиск в выбранном виде работ</span>
+                    <input id="zinchenko-search" type="search" placeholder="Название, автор, ключевое слово" autocomplete="off">
+                </label>
+                <label class="zinchenko-filter-field" for="zinchenko-year-select">
+                    <span>Год публикации</span>
+                    <select id="zinchenko-year-select"><option value="">Все годы</option></select>
+                </label>
+            </div>
+            <p class="zinchenko-results-summary" id="zinchenko-results-summary" role="status" aria-live="polite" hidden></p>
+
+            <div class="zinchenko-results" id="zinchenko-results">
+                <?php foreach ($zinchenko['categories'] as $category) : ?>
+                    <section class="zinchenko-category" id="zinchenko-<?php echo esc_attr($category['slug']); ?>" data-category="<?php echo esc_attr($category['slug']); ?>" aria-labelledby="zinchenko-title-<?php echo esc_attr($category['slug']); ?>">
+                        <h3 id="zinchenko-title-<?php echo esc_attr($category['slug']); ?>"><?php echo esc_html($category['title']); ?></h3>
+                        <p class="zinchenko-category-note">Записи приведены по годам в порядке исходного документа.</p>
                         <?php $start = 1; ?>
                         <?php foreach ($category['years'] as $group) : ?>
-                            <section class="zinchenko-year" id="year-<?php echo esc_attr($category['slug'] . '-' . $group['year']); ?>">
+                            <section class="zinchenko-year" id="year-<?php echo esc_attr($category['slug'] . '-' . $group['year']); ?>" data-year="<?php echo esc_attr($group['year']); ?>">
                                 <div class="zinchenko-year-heading">
-                                    <h3><?php echo esc_html($group['year']); ?></h3>
-                                    <span><?php echo esc_html($zinchenko_count(count($group['entries']))); ?></span>
+                                    <h4><?php echo esc_html($group['year']); ?></h4>
                                 </div>
                                 <ol start="<?php echo esc_attr($start); ?>">
+                                    <?php $number = $start; ?>
                                     <?php foreach ($group['entries'] as $entry) : ?>
-                                        <li><?php echo esc_html($entry); ?></li>
+                                        <li value="<?php echo esc_attr($number++); ?>"><?php echo esc_html($entry); ?></li>
                                     <?php endforeach; ?>
                                 </ol>
                             </section>
                             <?php $start += count($group['entries']); ?>
                         <?php endforeach; ?>
-                    </div>
-                </details>
-            <?php endforeach; ?>
+                    </section>
+                <?php endforeach; ?>
+            </div>
+            <div class="zinchenko-empty" id="zinchenko-empty" hidden>
+                <p>По вашему запросу публикаций не найдено.</p>
+                <button type="button" id="zinchenko-reset">Сбросить поиск и год</button>
+            </div>
+            <nav class="zinchenko-pagination" aria-label="Страницы списка публикаций" hidden>
+                <button type="button" id="zinchenko-prev">← Назад</button>
+                <span class="zinchenko-page-number" id="zinchenko-page-number"></span>
+                <button type="button" id="zinchenko-next">Далее →</button>
+            </nav>
         </section>
 
         <section class="zinchenko-section" id="zinchenko-pdfs" aria-labelledby="zinchenko-pdfs-title">
@@ -2175,15 +2200,165 @@ get_header();
   var root = document.querySelector('.zinchenko-page');
   if (!root) return;
 
-  function showAnchor() {
-    var id = decodeURIComponent(window.location.hash.slice(1));
-    var target = id ? document.getElementById(id) : null;
-    if (!target) return;
-    var group = target.closest('.zinchenko-list');
-    if (group) group.open = true;
+  var publications = document.getElementById('zinchenko-publications');
+  var typeControls = publications.querySelector('.zinchenko-publication-types');
+  var typeButtons = Array.from(publications.querySelectorAll('.zinchenko-publication-type'));
+  var mobileControls = publications.querySelector('.zinchenko-mobile-category');
+  var mobileSelect = document.getElementById('zinchenko-category-select');
+  var filterBar = publications.querySelector('.zinchenko-filter-bar');
+  var search = document.getElementById('zinchenko-search');
+  var yearSelect = document.getElementById('zinchenko-year-select');
+  var summary = document.getElementById('zinchenko-results-summary');
+  var results = document.getElementById('zinchenko-results');
+  var empty = document.getElementById('zinchenko-empty');
+  var pagination = publications.querySelector('.zinchenko-pagination');
+  var prev = document.getElementById('zinchenko-prev');
+  var next = document.getElementById('zinchenko-next');
+  var pageNumber = document.getElementById('zinchenko-page-number');
+  var categories = {};
+  var pageSize = 20;
+
+  function normalize(value) {
+    return value.toLowerCase().replace(/ё/g, 'е').trim();
   }
-  window.addEventListener('hashchange', showAnchor);
-  showAnchor();
+
+  Array.from(publications.querySelectorAll('.zinchenko-category')).forEach(function (panel) {
+    var groups = Array.from(panel.querySelectorAll('.zinchenko-year'));
+    categories[panel.dataset.category] = {
+      panel: panel,
+      groups: groups,
+      entries: Array.from(panel.querySelectorAll('.zinchenko-year li')).map(function (item) {
+        var group = item.closest('.zinchenko-year');
+        return { item: item, group: group, year: group.dataset.year, text: normalize(item.textContent) };
+      })
+    };
+  });
+
+  var state = { category: typeButtons[0].dataset.category, year: '', query: '', page: 1 };
+
+  function fillYears() {
+    yearSelect.replaceChildren();
+    var allYears = document.createElement('option');
+    allYears.value = '';
+    allYears.textContent = 'Все годы';
+    yearSelect.appendChild(allYears);
+    categories[state.category].groups.forEach(function (group) {
+      var option = document.createElement('option');
+      option.value = group.dataset.year;
+      option.textContent = group.dataset.year;
+      yearSelect.appendChild(option);
+    });
+    yearSelect.value = state.year;
+  }
+
+  function renderPublications() {
+    Object.keys(categories).forEach(function (slug) {
+      categories[slug].panel.hidden = slug !== state.category;
+    });
+    typeButtons.forEach(function (button) {
+      button.setAttribute('aria-pressed', button.dataset.category === state.category ? 'true' : 'false');
+    });
+    mobileSelect.value = state.category;
+
+    var active = categories[state.category];
+    var matches = active.entries.filter(function (entry) {
+      return (!state.year || entry.year === state.year) &&
+        (!state.query || entry.text.indexOf(state.query) !== -1);
+    });
+    var total = matches.length;
+    var pages = Math.max(1, Math.ceil(total / pageSize));
+    state.page = Math.min(state.page, pages);
+    var first = (state.page - 1) * pageSize;
+
+    active.entries.forEach(function (entry) { entry.item.hidden = true; });
+    active.groups.forEach(function (group) { group.hidden = true; });
+    matches.slice(first, first + pageSize).forEach(function (entry) {
+      entry.group.hidden = false;
+      entry.item.hidden = false;
+    });
+
+    results.hidden = total === 0;
+    empty.hidden = total !== 0;
+    summary.textContent = total
+      ? 'Показаны записи ' + (first + 1) + '–' + Math.min(first + pageSize, total) + ' из ' + total
+      : 'Публикаций не найдено';
+    pagination.hidden = pages <= 1;
+    prev.disabled = state.page === 1;
+    next.disabled = state.page === pages;
+    pageNumber.textContent = 'Страница ' + state.page + ' из ' + pages;
+  }
+
+  function selectCategory(slug, year, updateHash) {
+    if (!categories[slug]) return;
+    state.category = slug;
+    state.year = year || '';
+    state.page = 1;
+    fillYears();
+    renderPublications();
+    if (updateHash) {
+      var id = state.year ? 'year-' + slug + '-' + state.year : 'zinchenko-' + slug;
+      window.history.replaceState(null, '', '#' + id);
+    }
+  }
+
+  function showHashSelection() {
+    var id;
+    try { id = decodeURIComponent(window.location.hash.slice(1)); }
+    catch (error) { return; }
+    var target = id ? document.getElementById(id) : null;
+    var panel = target && target.closest('.zinchenko-category');
+    if (!panel) return;
+    search.value = '';
+    state.query = '';
+    var year = target.closest('.zinchenko-year');
+    selectCategory(panel.dataset.category, year ? year.dataset.year : '', false);
+  }
+
+  selectCategory(state.category, '', false);
+  typeControls.hidden = false;
+  mobileControls.hidden = false;
+  filterBar.hidden = false;
+  summary.hidden = false;
+  showHashSelection();
+  window.addEventListener('hashchange', showHashSelection);
+
+  typeButtons.forEach(function (button) {
+    button.addEventListener('click', function () { selectCategory(button.dataset.category, '', true); });
+  });
+  mobileSelect.addEventListener('change', function () { selectCategory(mobileSelect.value, '', true); });
+  search.addEventListener('input', function () {
+    state.query = normalize(search.value);
+    state.page = 1;
+    renderPublications();
+  });
+  yearSelect.addEventListener('change', function () {
+    state.year = yearSelect.value;
+    state.page = 1;
+    renderPublications();
+    window.history.replaceState(null, '', state.year
+      ? '#year-' + state.category + '-' + state.year
+      : '#zinchenko-' + state.category);
+  });
+  document.getElementById('zinchenko-reset').addEventListener('click', function () {
+    search.value = '';
+    state.query = '';
+    state.year = '';
+    state.page = 1;
+    yearSelect.value = '';
+    renderPublications();
+    window.history.replaceState(null, '', '#zinchenko-' + state.category);
+    search.focus();
+  });
+  function changePage(amount) {
+    state.page += amount;
+    renderPublications();
+    results.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      block: 'start'
+    });
+  }
+  prev.addEventListener('click', function () { changePage(-1); });
+  next.addEventListener('click', function () { changePage(1); });
 
   var viewer = document.getElementById('zinchenko-pdf-viewer');
   var frame = document.getElementById('zinchenko-reader-frame');
