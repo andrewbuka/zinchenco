@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html <?php language_attributes(); ?>>
 <head>
 <meta charset="utf-8">
 <!-- 	<?php 
 		$post_id = get_the_ID();
 	?> -->
-<title><?php the_title() ?> | Институт микробиологии НАН Беларуси</title>
 <?php wp_head() ?>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -36,11 +35,12 @@
                     <div class="top-left clearfix">
                         <div class="address"> <li>
 <!--                                                 <?php echo do_shortcode('[bvi]'); ?> -->
-							<?php echo do_shortcode( '[bvi text="Версия для слабовидящих"]' ); ?>
+							<?php echo do_shortcode( '[bvi text="' . esc_attr( mbio_t( 'Версия для слабовидящих' ) ) . '"]' ); ?>
                                             </li>
                         </div>
                         
-                        <div class="email"> <?php echo do_shortcode('[gtranslate]'); ?>
+                        <div class="email">
+                            <?php echo function_exists( 'pll_the_languages' ) ? mbio_language_switcher() : do_shortcode( '[gtranslate]' ); ?>
                         </div>
                         <div class="email search-icon"> 
                             <img src='https://mbio.bas-net.by/wp-content/uploads/2025/05/icons8-поиск-30.png'>
@@ -50,7 +50,7 @@
                     <div class="top-right clearfix">
                         <div class="links">
                             <ul class="clearfix">
-                                <li><a class="collection-link" href="https://mbio.bas-net.by/bim/">Коллекция микроорганизмов</a></li>
+                                <li><a class="collection-link" href="https://mbio.bas-net.by/bim/"><?php echo esc_html( mbio_t( 'Коллекция микроорганизмов' ) ); ?></a></li>
                             </ul>
                         </div>
                      
@@ -74,7 +74,7 @@
                         <!--Logo-->
                         <div class="logo-box">
                             <div class="logo">                            
-                                <a href="<?php echo get_page_link(6); ?>" title="Институт микробиологии НАН Беларуси">
+                                <a href="<?php echo esc_url( mbio_home_link() ); ?>" title="<?php echo esc_attr( mbio_t( 'Институт микробиологии НАН Беларуси' ) ); ?>">
                                     <?php 
                                         $logo_img = '';
                                         $custom_logo_id = get_theme_mod( 'custom_logo' );
@@ -82,8 +82,8 @@
                                         if( $custom_logo_id ){
                                             $logo_img = wp_get_attachment_image( $custom_logo_id, 'full', false, array(
                                             'class'    => 'sticky-logo',
-                                            'alt'    => 'Институт микробиологии НАН Беларуси',
-                                            'title'    => 'Институт микробиологии НАН Беларуси',                                            
+                                            'alt'    => mbio_t( 'Институт микробиологии НАН Беларуси' ),
+                                            'title'    => mbio_t( 'Институт микробиологии НАН Беларуси' ),
                                             ) );
                                         }
                                         
@@ -102,84 +102,84 @@
                                 <nav class="main-menu navbar-expand-md navbar-light">
                                     <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                         <ul class="navigation clearfix">
-                                            <!-- <li class="current"><a href="<?php echo get_page_link(6); ?>">Главная</a></li> -->
+                                            <!-- <li class="current"><a href="<?php echo mbio_page_link(6); ?>">Главная</a></li> -->
 
-                                            <li class="dropdown"><a href="#">Институт</a>
+                                            <li class="dropdown"><a href="#"><?php echo esc_html( mbio_t( 'Институт' ) ); ?></a>
 												<ul class='my-ul-style'>
-													<li><a href="<?php echo get_page_link(277) ?>">История</a></li>
-													<li ><a href="<?php echo get_page_link(281); ?>">Структура института</a>
-													<li ><a href="<?php echo get_page_link(1983); ?>">Направления и задачи</a>
+													<li><a href="<?php echo mbio_page_link(277) ?>"><?php echo esc_html( mbio_t( 'История' ) ); ?></a></li>
+													<li ><a href="<?php echo mbio_page_link(281); ?>"><?php echo esc_html( mbio_t( 'Структура института' ) ); ?></a>
+													<li ><a href="<?php echo mbio_page_link(1983); ?>"><?php echo esc_html( mbio_t( 'Направления и задачи' ) ); ?></a>
 													    
 													</li>
 													
-													<li class="dropdown"><a href="#">Издания и публикации</a>
+													<li class="dropdown"><a href="#"><?php echo esc_html( mbio_t( 'Издания и публикации' ) ); ?></a>
     													<ul class='my-ul-style'>
-                                                            <li><a href="<?php echo get_page_link(283); ?>">Книги и публикации</a></li>
-                                                            <li><a href="<?php echo get_page_link(286); ?>">Сборники научных трудов</a></li>
+                                                            <li><a href="<?php echo mbio_page_link(283); ?>"><?php echo esc_html( mbio_t( 'Книги и публикации' ) ); ?></a></li>
+                                                            <li><a href="<?php echo mbio_page_link(286); ?>"><?php echo esc_html( mbio_t( 'Сборники научных трудов' ) ); ?></a></li>
                                                         </ul>
                                                     </li>
                                                    
-                                                    <li class="current"><a href="<?php echo get_page_link(574); ?>">Конференции</a></li>
+                                                    <li class="current"><a href="<?php echo mbio_page_link(574); ?>"><?php echo esc_html( mbio_t( 'Конференции' ) ); ?></a></li>
                                                     
-                                                    <li class="current"><a href="<?php echo get_page_link(342); ?>">Аспирантура и докторантура</a></li>
-                                                    <li class="current"><a href="<?php echo get_page_link(354); ?>">Совет по защите диссертаций</a></li>
+                                                    <li class="current"><a href="<?php echo mbio_page_link(342); ?>"><?php echo esc_html( mbio_t( 'Аспирантура и докторантура' ) ); ?></a></li>
+                                                    <li class="current"><a href="<?php echo mbio_page_link(354); ?>"><?php echo esc_html( mbio_t( 'Совет по защите диссертаций' ) ); ?></a></li>
                                                    
-                                                    <li class="dropdown"><a href="#">Общественные объединения</a>
+                                                    <li class="dropdown"><a href="#"><?php echo esc_html( mbio_t( 'Общественные объединения' ) ); ?></a>
                                                         <ul class='my-ul-style'>
-                                                            <li><a href="<?php echo get_page_link(452); ?>">Общественное объединение Микробиологическое общество</a></li>
-                                                            <li><a href="<?php echo get_page_link(457); ?>">Совет молодых ученых</a></li>
-                                                            <li><a href="<?php echo get_page_link(459); ?>">Первичная профсоюзная организация Института микробиологии НАН Беларуси</a></li>
+                                                            <li><a href="<?php echo mbio_page_link(452); ?>"><?php echo esc_html( mbio_t( 'Общественное объединение Микробиологическое общество' ) ); ?></a></li>
+                                                            <li><a href="<?php echo mbio_page_link(457); ?>"><?php echo esc_html( mbio_t( 'Совет молодых ученых' ) ); ?></a></li>
+                                                            <li><a href="<?php echo mbio_page_link(459); ?>"><?php echo esc_html( mbio_t( 'Первичная профсоюзная организация Института микробиологии НАН Беларуси' ) ); ?></a></li>
                                                         </ul>
                                                     </li>
-                                                    <li class="current"><a href="<?php echo get_page_link(344); ?>">Объекты интеллектуальной собственности</a></li>
-<!--                                                     <li class="current "><a href="<?php echo get_page_link(894); ?>">Обращения</a></li> -->
+                                                    <li class="current"><a href="<?php echo mbio_page_link(344); ?>"><?php echo esc_html( mbio_t( 'Объекты интеллектуальной собственности' ) ); ?></a></li>
+<!--                                                     <li class="current "><a href="<?php echo mbio_page_link(894); ?>">Обращения</a></li> -->
                                                     
                                                     <!--<li><a href="https://mbio.bas-net.by/wp-content/uploads/2025/04/booklet_full.pdf">Скачать буклет</a></li>-->
 												</ul>
 											</li>
 											
-											 <li class="current visibility"><a href="https://mbio.bas-net.by/bim/">Коллекция микроорганизмов</a></li>
+											 <li class="current visibility"><a href="https://mbio.bas-net.by/bim/"><?php echo esc_html( mbio_t( 'Коллекция микроорганизмов' ) ); ?></a></li>
                                            
-                                            <li class="dropdown"><a href="#">Продукция</a>
+                                            <li class="dropdown"><a href="#"><?php echo esc_html( mbio_t( 'Продукция' ) ); ?></a>
                                                 <ul class='my-ul-style'>
-<!-- 													<li><a href="<?php echo get_page_link(1197); ?>">Ознакомиться с продукцией</a> -->
+<!-- 													<li><a href="<?php echo mbio_page_link(1197); ?>">Ознакомиться с продукцией</a> -->
 <!-- 														<li><a href="#">Ознакомиться с продукцией</a> -->
-                                                    <li><a target="_blank" href="https://inmi.by/#products">Купить продукцию (физ. лица)</a></li>
-                                                    <li><a target="_blank" href="https://inmi.by/yur-page/">Купить продукцию (юр. лица)</a></li>
+                                                    <li><a target="_blank" href="https://inmi.by/#products"><?php echo esc_html( mbio_t( 'Купить продукцию (физ. лица)' ) ); ?></a></li>
+                                                    <li><a target="_blank" href="https://inmi.by/yur-page/"><?php echo esc_html( mbio_t( 'Купить продукцию (юр. лица)' ) ); ?></a></li>
                                                     
                                                 </ul>
                                             </li>
                                             
-                                            <li><a href="<?php echo get_page_link(1075); ?>">Публикации</a></li>
-											<li class="current visibility"><a href="<?php echo get_page_link(1082); ?>">Наши ученые</a></li>
-<!--                                             <li class="current visibility"><a href="<?php echo get_page_link(894); ?>">Обращения</a></li> -->
-                                            <li ><a href="<?php echo get_page_link(6); ?>#news">Новости</a></li>
+                                            <li><a href="<?php echo mbio_page_link(1075); ?>"><?php echo esc_html( mbio_t( 'Публикации' ) ); ?></a></li>
+											<li class="current visibility"><a href="<?php echo mbio_page_link(1082); ?>"><?php echo esc_html( mbio_t( 'Наши ученые' ) ); ?></a></li>
+<!--                                             <li class="current visibility"><a href="<?php echo mbio_page_link(894); ?>">Обращения</a></li> -->
+                                            <li ><a href="<?php echo esc_url( mbio_home_link() ); ?>#news"><?php echo esc_html( mbio_t( 'Новости' ) ); ?></a></li>
 
-                                            <li class="dropdown"><a href="<?php echo get_page_link(268); ?>">Контакты</a>
+                                            <li class="dropdown"><a href="<?php echo mbio_page_link(268); ?>"><?php echo esc_html( mbio_t( 'Контакты' ) ); ?></a>
 												<ul class='my-ul-style'>
-													 <li ><a href="<?php echo get_page_link(268); ?>">Контакты подробно</a>
-													 <li ><a href="<?php echo get_page_link(1184); ?>">Личный прием</a>
-													 <li ><a href="<?php echo get_page_link(894); ?>">Обращения</a>
+													 <li ><a href="<?php echo mbio_page_link(268); ?>"><?php echo esc_html( mbio_t( 'Контакты подробно' ) ); ?></a>
+													 <li ><a href="<?php echo mbio_page_link(1184); ?>"><?php echo esc_html( mbio_t( 'Личный прием' ) ); ?></a>
+													 <li ><a href="<?php echo mbio_page_link(894); ?>"><?php echo esc_html( mbio_t( 'Обращения' ) ); ?></a>
 												</ul>
 											</li>
                                             
 
-                                            <li class="current visibility"><a href="<?php echo get_page_link(342); ?>">Аспирантура и докторантура</a></li>
-                                            <li class="current visibility"><a href="<?php echo get_page_link(354); ?>">Совет по защите диссертаций</a></li>
-                                            <li class="dropdown visibility"><a href="#">Издания и публикации</a>
+                                            <li class="current visibility"><a href="<?php echo mbio_page_link(342); ?>"><?php echo esc_html( mbio_t( 'Аспирантура и докторантура' ) ); ?></a></li>
+                                            <li class="current visibility"><a href="<?php echo mbio_page_link(354); ?>"><?php echo esc_html( mbio_t( 'Совет по защите диссертаций' ) ); ?></a></li>
+                                            <li class="dropdown visibility"><a href="#"><?php echo esc_html( mbio_t( 'Издания и публикации' ) ); ?></a>
                                                 <ul>
-                                                    <li><a href="<?php echo get_page_link(283); ?>">Книги и публикации</a></li>
-                                                    <li><a href="<?php echo get_page_link(286); ?>">Сборники научных трудов</a></li>
+                                                    <li><a href="<?php echo mbio_page_link(283); ?>"><?php echo esc_html( mbio_t( 'Книги и публикации' ) ); ?></a></li>
+                                                    <li><a href="<?php echo mbio_page_link(286); ?>"><?php echo esc_html( mbio_t( 'Сборники научных трудов' ) ); ?></a></li>
                                                     
                                                 </ul>
                                             </li>
-                                            <li class="current visibility"><a href="<?php echo get_page_link(344); ?>">Объекты интеллектуальной собственности</a></li>
-                                            <li class="current visibility"><a href="<?php echo get_page_link(574); ?>">Конференции</a></li>
-                                            <li class="dropdown visibility"><a href="#">Общественные объединения</a>
+                                            <li class="current visibility"><a href="<?php echo mbio_page_link(344); ?>"><?php echo esc_html( mbio_t( 'Объекты интеллектуальной собственности' ) ); ?></a></li>
+                                            <li class="current visibility"><a href="<?php echo mbio_page_link(574); ?>"><?php echo esc_html( mbio_t( 'Конференции' ) ); ?></a></li>
+                                            <li class="dropdown visibility"><a href="#"><?php echo esc_html( mbio_t( 'Общественные объединения' ) ); ?></a>
                                                 <ul>
-                                                    <li><a href="<?php echo get_page_link(452); ?>">Общественное объединение Микробиологическое общество</a></li>
-                                                    <li><a href="<?php echo get_page_link(457); ?>">Совет молодых ученых</a></li>
-                                                    <li><a href="<?php echo get_page_link(459); ?>">Первичная профсоюзная организация Института микробиологии НАН Беларуси</a></li>
+                                                    <li><a href="<?php echo mbio_page_link(452); ?>"><?php echo esc_html( mbio_t( 'Общественное объединение Микробиологическое общество' ) ); ?></a></li>
+                                                    <li><a href="<?php echo mbio_page_link(457); ?>"><?php echo esc_html( mbio_t( 'Совет молодых ученых' ) ); ?></a></li>
+                                                    <li><a href="<?php echo mbio_page_link(459); ?>"><?php echo esc_html( mbio_t( 'Первичная профсоюзная организация Института микробиологии НАН Беларуси' ) ); ?></a></li>
                                                 </ul>
                                             </li>
                                            
@@ -193,8 +193,8 @@
 
                             <!--Contact Info-->
                             <div class="contact-info">
-                                <div class="phone"><span class="icon flaticon-telephone-1"></span> <a href="tel:<?php the_field('phone-number', 6); ?> "><?php the_field('phone_visual', 6); ?> </a></div>
-                                <div class="hours">Пн - Чт: 9:00 - 18:00, Пт: 9:00 - 15:55</div>
+                                <div class="phone"><span class="icon flaticon-telephone-1"></span> <a href="tel:<?php the_field('phone-number', mbio_translated_post_id( 6 ) ); ?> "><?php the_field('phone_visual', mbio_translated_post_id( 6 ) ); ?> </a></div>
+                                <div class="hours"><?php echo esc_html( mbio_t( 'Пн - Чт: 9:00 - 18:00, Пт: 9:00 - 15:55' ) ); ?></div>
                             </div>
 
                         </div>
@@ -210,7 +210,7 @@
             <div class="auto-container clearfix">
                 <!--Logo-->
                 <div class="logo pull-left">
-                    <a href="index.html" title=""><img class="sticky-logo" src="images/inmi-logo.png" alt="" title=""></a>
+                    <a href="<?php echo esc_url( mbio_home_link() ); ?>" title="<?php echo esc_attr( mbio_t( 'Институт микробиологии НАН Беларуси' ) ); ?>"><img class="sticky-logo" src="images/inmi-logo.png" alt="" title=""></a>
                 </div>
              
                 <div class="pull-right">
@@ -228,7 +228,7 @@
             <div class="close-btn"><span class="icon flaticon-cancel"></span></div>
             
             <nav class="menu-box">
-                <div class="nav-logo"><a href="index.html"><img class="sticky-logo" src="images/inmi-logo.png" alt="" title=""></a></div>
+                <div class="nav-logo"><a href="<?php echo esc_url( mbio_home_link() ); ?>"><img class="sticky-logo" src="images/inmi-logo.png" alt="" title=""></a></div>
                 <div class="menu-outer"></div>
 				<!--Social Links-->
 				<div class="social-links">

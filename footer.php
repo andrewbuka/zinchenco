@@ -1,5 +1,5 @@
  <!-- Main Footer / Style Two-->
- <footer class="main-footer footer-style-two footer-lang ru">
+ <footer class="main-footer footer-style-two footer-lang <?php echo esc_attr( mbio_current_language() ); ?>">
 
 <!--Widgets Section-->
 <div class="widgets-section">
@@ -10,7 +10,7 @@
             <div class="footer-column col-lg-4 col-md-5 col-sm-12">
                 <div class="footer-widget about-widget">
                     <div class="footer-logo-box">
-                        <a href="<?php echo get_page_link(6); ?>" title="Институт микробиологии НАН Беларуси">
+                        <a href="<?php echo esc_url( mbio_home_link() ); ?>" title="<?php echo esc_attr( mbio_t( 'Институт микробиологии НАН Беларуси' ) ); ?>">
                                     <?php 
                                         $logo_img = '';
                                         $custom_logo_id = get_theme_mod( 'custom_logo' );
@@ -18,8 +18,8 @@
                                         if( $custom_logo_id ){
                                             $logo_img = wp_get_attachment_image( $custom_logo_id, 'full', false, array(
                                             'class'    => 'sticky-logo',
-                                            'alt'    => 'Институт микробиологии НАН Беларуси',
-                                            'title'    => 'Институт микробиологии НАН Беларуси',                                            
+                                            'alt'    => mbio_t( 'Институт микробиологии НАН Беларуси' ),
+                                            'title'    => mbio_t( 'Институт микробиологии НАН Беларуси' ),
                                             ) );
                                         }
                                         
@@ -28,10 +28,10 @@
                                 </a>
                     </div>
                     <div class="about-text">
-                        <?php the_field('requisites-1', 6); ?>
+                        <?php the_field('requisites-1', mbio_translated_post_id( 6 ) ); ?>
                     </div>
                     <div class="about-text">
-                    <?php the_field('requisites-2', 6); ?>
+                    <?php the_field('requisites-2', mbio_translated_post_id( 6 ) ); ?>
                     </div>
 
                     <div class="footer-social">
@@ -56,15 +56,15 @@
                             </div>
                             <div class="widget-content">
                                 <ul>
-                                    <li><a href="<?php echo get_page_link(6); ?>">Главная</a></li>
-                                    <li><a target="_blank" href="https://inmi.by">Продукция</a></li>
-                                    <li><a href="<?php echo get_page_link(281); ?>">Структура института</a></li>
-                                    <li><a href="https://mbio.bas-net.by/bim/">Коллекция микроорганизмов</a></li>                                           
-                                    <li><a href="<?php echo get_page_link(574); ?>">Конференции</a></li>
-                                    <li><a href="<?php echo get_page_link(457); ?>">Совет молодых ученых</a></li>
-                                    <li><a href="<?php echo get_page_link(459); ?>">Первичная профсоюзная организация Института</a></li>
-                                    <li><a href="<?php echo get_page_link(268); ?>">Контакты</a></li>
-                                    <li><a href="<?php echo get_page_link(894); ?>">Обращения</a></li>
+                                    <li><a href="<?php echo esc_url( mbio_home_link() ); ?>"><?php echo esc_html( mbio_t( 'Главная' ) ); ?></a></li>
+                                    <li><a target="_blank" href="https://inmi.by"><?php echo esc_html( mbio_t( 'Продукция' ) ); ?></a></li>
+                                    <li><a href="<?php echo mbio_page_link(281); ?>"><?php echo esc_html( mbio_t( 'Структура института' ) ); ?></a></li>
+                                    <li><a href="https://mbio.bas-net.by/bim/"><?php echo esc_html( mbio_t( 'Коллекция микроорганизмов' ) ); ?></a></li>
+                                    <li><a href="<?php echo mbio_page_link(574); ?>"><?php echo esc_html( mbio_t( 'Конференции' ) ); ?></a></li>
+                                    <li><a href="<?php echo mbio_page_link(457); ?>"><?php echo esc_html( mbio_t( 'Совет молодых ученых' ) ); ?></a></li>
+                                    <li><a href="<?php echo mbio_page_link(459); ?>"><?php echo esc_html( mbio_t( 'Первичная профсоюзная организация Института' ) ); ?></a></li>
+                                    <li><a href="<?php echo mbio_page_link(268); ?>"><?php echo esc_html( mbio_t( 'Контакты' ) ); ?></a></li>
+                                    <li><a href="<?php echo mbio_page_link(894); ?>"><?php echo esc_html( mbio_t( 'Обращения' ) ); ?></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -78,13 +78,13 @@
                             </div>
                             <div class="widget-content">
                                 <ul>
-                                    <li><a href="<?php echo get_page_link(277) ?>">История Института</a></li>
-                                    <li><a href="<?php echo get_page_link(342); ?>">Аспирантура и докторантура</a></li>
-                                    <li><a href="<?php echo get_page_link(354); ?>">Совет по защите диссертаций</a></li>
-                                    <li><a href="<?php echo get_page_link(283); ?>">Книги и монографии</a></li>
-                                    <li><a href="<?php echo get_page_link(286); ?>">Сборники научных трудов</a></li>
-                                    <li><a href="<?php echo get_page_link(344); ?>">Объекты интеллектуальной собственности</a></li>
-                                    <li><a href="<?php echo get_page_link(452); ?>">Общественное объединение Микробиологическое общество</a></li>
+                                    <li><a href="<?php echo mbio_page_link(277) ?>"><?php echo esc_html( mbio_t( 'История Института' ) ); ?></a></li>
+                                    <li><a href="<?php echo mbio_page_link(342); ?>"><?php echo esc_html( mbio_t( 'Аспирантура и докторантура' ) ); ?></a></li>
+                                    <li><a href="<?php echo mbio_page_link(354); ?>"><?php echo esc_html( mbio_t( 'Совет по защите диссертаций' ) ); ?></a></li>
+                                    <li><a href="<?php echo mbio_page_link(283); ?>"><?php echo esc_html( mbio_t( 'Книги и монографии' ) ); ?></a></li>
+                                    <li><a href="<?php echo mbio_page_link(286); ?>"><?php echo esc_html( mbio_t( 'Сборники научных трудов' ) ); ?></a></li>
+                                    <li><a href="<?php echo mbio_page_link(344); ?>"><?php echo esc_html( mbio_t( 'Объекты интеллектуальной собственности' ) ); ?></a></li>
+                                    <li><a href="<?php echo mbio_page_link(452); ?>"><?php echo esc_html( mbio_t( 'Общественное объединение Микробиологическое общество' ) ); ?></a></li>
                                     
                                    
                                 </ul>
@@ -98,7 +98,7 @@
             <div class="footer-column col-lg-3 col-md-12 col-sm-12">
                 <div class="footer-widget gallery-widget">
                     <div class="widget-title">
-                        <h3>Контакты</h3>
+                        <h3><?php echo esc_html( mbio_t( 'Контакты' ) ); ?></h3>
                     </div>
                     <div class="info">
                         <!--Info Block-->
@@ -108,8 +108,8 @@
                                     <img src="images/icons/icon-message-1.png" alt="">
                                 </span>
                             </div>
-                            <strong>Адрес</strong>
-                            <div class="info-text"><?php the_field('address-short', 6); ?></div>
+                            <strong><?php echo esc_html( mbio_t( 'Адрес' ) ); ?></strong>
+                            <div class="info-text"><?php the_field('address-short', mbio_translated_post_id( 6 ) ); ?></div>
                         </div>
                         <!--Info Block-->
                         <div class="info-block">
@@ -118,9 +118,9 @@
                                     <img src="images/icons/icon-call-1.png" alt="">
                                 </span>
                             </div>
-                            <strong>Телефон</strong>
+                            <strong><?php echo esc_html( mbio_t( 'Телефон' ) ); ?></strong>
                             <div class="info-text">
-                            <a href="tel:<?php the_field('phone-number', 6); ?> "><?php the_field('phone_visual', 6); ?> </a>
+                            <a href="tel:<?php the_field('phone-number', mbio_translated_post_id( 6 ) ); ?> "><?php the_field('phone_visual', mbio_translated_post_id( 6 ) ); ?> </a>
                             </div>
                         </div>
                         <!--Info Block-->
@@ -132,7 +132,7 @@
                             </div>
                             <strong>Email</strong>
                             <div class="info-text">
-                            <a href="mailto:<?php the_field('email', 6); ?> "><?php the_field('email', 6); ?> </a>
+                            <a href="mailto:<?php the_field('email', mbio_translated_post_id( 6 ) ); ?> "><?php the_field('email', mbio_translated_post_id( 6 ) ); ?> </a>
                             </div>
                         </div>
                     </div>
@@ -180,7 +180,7 @@
 			<div class="links-box my-links-box">
 				<a target="_blank" href="https://mbiov.bas-net.by/roundcube/" class="theme-btn btn-style-four">
 					<div class="btn-title">
-						<span class="btn-txt">Почтовый портал</span>
+						<span class="btn-txt"><?php echo esc_html( mbio_t( 'Почтовый портал' ) ); ?></span>
 						<span class="btn-icon">
 							<span class="icon flaticon-arrows-11"></span> 
 						</span>
@@ -199,23 +199,13 @@
         <div class="inner clearfix">
         
             <!--Copyright-->
-            <div class="copyright">&#169 Институт микробиологии НАН Беларуси</div>
+            <div class="copyright">&#169; <?php echo esc_html( mbio_t( 'Институт микробиологии НАН Беларуси' ) ); ?></div>
             <div class="footer-nav">
-				<ul>
-					<li class='ru-btn'>
-						ru
-					</li>
-					<li class='bel-btn'>
-						bel
-					</li>
-					<li class='en-btn'>
-						en
-					</li>
-				</ul>
+                <?php echo mbio_language_switcher(); ?>
                 <ul class="clearfix">
-                    <li><a href="<?php echo get_page_link(892) ?>">Политика в отношении обработки персональных данных</a></li>
+                    <li><a href="<?php echo mbio_page_link(892) ?>"><?php echo esc_html( mbio_t( 'Политика в отношении обработки персональных данных' ) ); ?></a></li>
                     <!-- <li><a href="map.html">Карта сайта</a></li> -->
-                    <li><a href="https://mbio.bas-net.by/wp-content/uploads/2025/04/booklet_full.pdf">Буклет</a></li>
+                    <li><a href="https://mbio.bas-net.by/wp-content/uploads/2025/04/booklet_full.pdf"><?php echo esc_html( mbio_t( 'Буклет' ) ); ?></a></li>
                 </ul>
             </div>
         </div>

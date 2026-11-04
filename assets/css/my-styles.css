@@ -323,3 +323,63 @@
 .none {
 	display: none;
 }
+
+.mbio-language-switcher ul {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.mbio-language-switcher li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.mbio-language-switcher a,
+.mbio-language-switcher span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    min-height: 34px;
+    padding: 5px 7px;
+    border-radius: 4px;
+    color: #1c4d32;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.mbio-language-switcher a:hover,
+.mbio-language-switcher [aria-current="page"] {
+    background: #e8f1e6;
+    color: #174a31;
+}
+.mbio-language-switcher a:focus-visible {
+    outline: 2px solid #246e49;
+    outline-offset: 2px;
+}
+.footer-bottom .mbio-language-switcher a,
+.footer-bottom .mbio-language-switcher span {
+    color: #fff;
+}
+.footer-bottom .mbio-language-switcher a:hover,
+.footer-bottom .mbio-language-switcher [aria-current="page"] {
+    background: rgba(255,255,255,.18);
+    color: #fff;
+}
+.main-footer .footer-bottom .mbio-language-switcher li {
+    float: none;
+    margin-left: 0;
+    line-height: normal;
+}
+.main-footer .footer-bottom .mbio-language-switcher li:before {
+    display: none;
+}
+.mbio-editable-page .page-banner.without-image {
+    padding: 100px 0 65px;
+}
+.mbio-editable-page .page-banner h1 {
+    font-size: clamp(32px, 5vw, 64px);
+}

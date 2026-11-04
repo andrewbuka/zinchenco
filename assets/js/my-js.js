@@ -83,17 +83,20 @@ const searchContainer = document.querySelector('.search-container');
 const closeContainer = document.querySelector('.close-container');
 const formSearch = document.querySelector('#searchwp-form-1')
 
-formSearch.addEventListener('submit', (event) => {
-    event.preventDefault();
-})
+if (formSearch) {
+    formSearch.addEventListener('submit', (event) => {
+        event.preventDefault();
+    })
+}
 
-
-searchIcon.addEventListener('click', () => {
-    searchContainer.classList.add('search-visible');
-})
-closeContainer.addEventListener('click', () => {
-    searchContainer.classList.remove('search-visible');
-})
+if (searchIcon && searchContainer && closeContainer) {
+    searchIcon.addEventListener('click', () => {
+        searchContainer.classList.add('search-visible');
+    })
+    closeContainer.addEventListener('click', () => {
+        searchContainer.classList.remove('search-visible');
+    })
+}
 
 const ruBtn = document.querySelector('.ru-btn');
 const belBtn = document.querySelector('.bel-btn');
